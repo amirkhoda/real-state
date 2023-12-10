@@ -7,7 +7,7 @@
       "@/utils/*": ["src/utils/*"],
       "@/models/*": ["src/models/*"],
       "@/layout/*": ["src/components/layout/*"],
-      "@/moduls/*": ["src/components/moduls/*"],
+      "@/module/*": ["src/components/module/*"],
       "@/template/*": ["src/components/template/*"],
       "@/providers/*": ["src/providers/*"],
       "@/api/*": ["src/app/api/*"]
