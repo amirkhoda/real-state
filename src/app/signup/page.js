@@ -1,8 +1,8 @@
-import SingupPage from "@/template/SingupPage";
+import SignupPage from "@/template/SignupPage";
 import React from "react";
 
 function Signup() {
-  return <SingupPage />;
+  return <SignupPage />;
 }
 
 export default Signup;

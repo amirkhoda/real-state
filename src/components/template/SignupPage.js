@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import styles from "@/template/SingupPage.module.css";
+import styles from "@/template/SignupPage.module.css";
 import Link from "next/link";
 import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { ThreeDots } from "react-loader-spinner";
-function SingupPage() {
+function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
@@ -79,4 +79,4 @@ function SingupPage() {
   );
 }
 
-export default SingupPage;
+export default SignupPage;
