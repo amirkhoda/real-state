@@ -1,6 +1,5 @@
 import styles from "./DashboardPage.module.css";
 function DashboardPage({ createdAt }) {
-  const date = new Date(createdAt).toLocaleDateString("fa-IR");
   return (
     <div className={styles.container}>
       <h3>سلام👋🏻</h3>
