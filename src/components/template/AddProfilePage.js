@@ -3,6 +3,7 @@ import styles from "./AddProfilePage.module.css";
 import React, { useState } from "react";
 import RadioList from "@/module/RadioList";
 import TextList from "@/module/TextList";
+import CustomDatePicker from "@/module/CustomDatePicker";
 
 function AddProfilePage() {
   const [profileData, setProfileData] = useState({
@@ -17,8 +18,18 @@ function AddProfilePage() {
     rules: [],
     amenities: [],
   });
-  const submitHandler = () => {
-    console.log(profileData);
+  const submitHandler = async () => {
+    const res = await fetch("/api/profile", {
+      method: "POST",
+      body: JSON.stringify(profileData),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+    if (data.error) {
+      console.log(data);
+    } else {
+      console.log("success", data);
+    }
   };
   return (
     <div className={styles.container}>
@@ -72,6 +83,10 @@ function AddProfilePage() {
         profileData={profileData}
         setProfileData={setProfileData}
         type="rules"
+      />
+      <CustomDatePicker
+        profileData={profileData}
+        setProfileData={setProfileData}
       />
       <button className={styles.submit} onClick={submitHandler}>
         ثبت آگهی
