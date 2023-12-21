@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import RadioList from "@/module/RadioList";
 import TextList from "@/module/TextList";
 import CustomDatePicker from "@/module/CustomDatePicker";
-
+import { Toaster, toast } from "react-hot-toast";
+import { ThreeDots } from "react-loader-spinner";
+import Loader from "@/module/Loader";
 function AddProfilePage() {
   const [profileData, setProfileData] = useState({
     title: "",
@@ -18,17 +20,20 @@ function AddProfilePage() {
     rules: [],
     amenities: [],
   });
+  const [loading, setLoading] = useState(false);
   const submitHandler = async () => {
+    setLoading(true);
     const res = await fetch("/api/profile", {
       method: "POST",
       body: JSON.stringify(profileData),
       headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
+    setLoading(false);
     if (data.error) {
-      console.log(data);
+      toast.error(data.error);
     } else {
-      console.log("success", data);
+      toast.success(data.message);
     }
   };
   return (
@@ -88,9 +93,14 @@ function AddProfilePage() {
         profileData={profileData}
         setProfileData={setProfileData}
       />
-      <button className={styles.submit} onClick={submitHandler}>
-        ثبت آگهی
-      </button>
+      <Toaster />
+      {loading ? (
+        <Loader />
+      ) : (
+        <button className={styles.submit} onClick={submitHandler}>
+          ثبت آگهی
+        </button>
+      )}
     </div>
   );
 }
