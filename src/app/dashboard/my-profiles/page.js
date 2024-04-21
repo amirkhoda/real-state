@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
-import MyProfilesPage from "@/template/MyProfilesPage";
+import MyProfilesPage from "@/template/MyProfilePage";
 
 async function Myprofiles() {
   await connectDB();
